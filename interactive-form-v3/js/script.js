@@ -35,6 +35,11 @@ nameInput.focus();
 //hide other job textbox upon loading page
 jobRoleOther.style.display = 'none';
 
+//refresh page function
+function refreshPage(){
+    window.location.reload();
+}
+
 //event listener for 'other' selection
 jobRoleList.addEventListener('change', () => {
     if (jobRoleList.value === 'other'){
@@ -75,7 +80,6 @@ shirtDesign.addEventListener('change', (e) =>{
 //event listenver for activity selection
 activityOptions.addEventListener('change', e => {
     let clicked = e.target
-    let clickedCost = clicked.getAttribute('data-cost');
     let clickedDateTime = clicked.getAttribute('data-day-and-time');
     let totalCost = 0;
 
@@ -83,7 +87,7 @@ activityOptions.addEventListener('change', e => {
         let checkBoxes = activityCheckbox[i];
         let checkBoxesDateTime = activityCheckbox[i].getAttribute('data-day-and-time');
     if (checkBoxes.checked){
-        totalCost += Number(clickedCost);
+        totalCost += parseInt(checkBoxes.getAttribute('data-cost'));
         
     }  
 }
@@ -137,29 +141,37 @@ const activityValidator = () => {
 const creditCardValidator = () => {
     const creditCardValue = creditCard.value;
     const creditCardValid = /^[\d]{13,16}$/.test(creditCardValue);
-    const zipCodeValue = zipCode.value;
-    const zipCodeValid = /^[\d]{5}$/.test(zipCodeValue);
-    const cvvValue = cvvNumber.value;
-    const cvvValid = /^[\d]{3}$/.test(cvvValue);
+    return creditCardValid;
 };
 
+const zipValidator = () => {
+    const zipCodeValue = zipCode.value;
+    const zipCodeValid = /^[\d]{5}$/.test(zipCodeValue);
+    return zipCodeValid;
+}
+
+const cvvValidator = () => {
+    const cvvValue = cvvNumber.value;
+    const cvvValid = /^[\d]{3}$/.test(cvvValue);
+    return cvvValid
+}
+
 //submit eventlistener
-submit.addEventListener('click', () => {
-    nameValidator();
-    emailValidator();
-    activityValidator();
-    creditCardValidator();
+form.addEventListener('submit', () => {
 
     if (!nameValidator()) {
         e.preventDefault();
-      }
-      if (!emailValidator()) {
+
+    }
+    if (!emailValidator()) {
         e.preventDefault();
-      }
-      if (!activityValidator()) {
+    }
+    if (!activityValidator()) {
         e.preventDefault();
-      }
+    }
       //if (!creditCardValidator()) {
        // e.preventDefault();
      // }
+
+
 });
