@@ -2,20 +2,25 @@
 const form = document.querySelector('form');
 const submit = document.querySelector('button[type="submit"]');
 const emailInput = document.getElementById('email');
+
 //variable for namefocus
 const nameInput = document.getElementById('name');
+
 //variables for job role
 const jobRoleList = document.getElementById('title');
 const jobRoleOther = document.getElementById('other-job-role');
+
 //variables for shirt design, disable selection box
 const colorSelection = document.getElementById('color');
 const shirtDesign = document.getElementById('design');
 let designOptions = colorSelection.querySelectorAll('option')
 colorSelection.disabled = true;
+
 //activity selection variables
 const activityOptions = document.getElementById('activities');
 const activityCheckbox = document.querySelectorAll('.activities input');
 const totalCostParagraph = document.getElementById('activites-cost');
+
 //variables for payment
 const paymentOptions = document.getElementById('payment');
 const creditCard = paymentOptions.querySelector(`option[value="credit-card"]`)
@@ -23,14 +28,17 @@ const creditCardField = document.getElementById('credit-card');
 const creditCardNum = document.getElementById('cc-num');
 const paypal = document.querySelector('#paypal');
 const bitcoin = document.querySelector('#bitcoin');
+
 //form validation variable
 const zipCode = document.getElementById('zip');
 const cvvNumber = document.getElementById('cvv');
 let activityTotal = 0
+
 //setting credit card as default choice and hiding other options
 creditCard.selected = 'true';
 paypal.style.display = 'none';
 bitcoin.style.display = 'none';
+
 // .focus to put focus on the name field when page is loaded
 nameInput.focus();
 
@@ -40,6 +48,19 @@ jobRoleOther.style.display = 'none';
 //refresh page function
 function refreshPage(){
     window.location.reload();
+}
+//valid input function
+const inputValid = (input) => {
+    input.parentElement.className = 'valid';
+    input.parentElement.className.remove = 'not-valid';
+    input.parentElement.lastElementChild.style.display = 'none';
+}
+
+//not valid function
+const inputNotValid = (input) => {
+    input.parentElement.className = 'not-valid';
+    input.parentElement.className.remove = 'valid';
+    input.parentElement.lastElementChild.style.display = 'block';
 }
 
 //event listener for 'other' selection
@@ -187,21 +208,15 @@ form.addEventListener('submit', e => {
         }
     } else {
         nameValidator();
-        nameInput.parentElement.className = 'valid';
-        nameInput.parentElement.className.remove = 'not-valid';
-        nameInput.parentElement.lastElementChild.style.display = 'none';
+        inputValid(nameInput);
     }
 
     if (!emailValidator()) {
         e.preventDefault();
-        emailInput.parentElement.className = 'not-valid';
-        emailInput.parentElement.className.remove = 'valid';
-        emailInput.parentElement.lastElementChild.style.display = 'block';
+        inputNotValid(emailInput);
     } else {
         emailValidator();
-        emailInput.parentElement.className = 'valid';
-        emailInput.parentElement.className.remove = 'not-valid';
-        emailInput.parentElement.lastElementChild.style.display = 'none';
+        inputValid(emailInput);
     }
 
     if (!activityValidator()) {
@@ -219,37 +234,28 @@ form.addEventListener('submit', e => {
     if (paymentOptions.value === 'credit-card') {
         if (!creditCardValidator()) {
             e.preventDefault();
-            creditCardNum.parentElement.className = 'not-valid';
-            creditCardNum.parentElement.className.remove = 'valid';
-            creditCardNum.parentElement.lastElementChild.style.display = 'block';
+            inputNotValid(creditCardNum);
         } else {
             creditCardValidator();
-            creditCardNum.parentElement.className = 'valid';
-            creditCardNum.parentElement.className.remove = 'not-valid';
-            creditCardNum.parentElement.lastElementChild.style.display = 'none';
+            inputValid(creditCardNum);
         }
         if (!zipValidator()) {
             e.preventDefault();
-            zipCode.parentElement.className = 'not-valid';
-            zipCode.parentElement.className.remove = 'valid';
-            zipCode.parentElement.lastElementChild.style.display = 'block';
+            inputNotValid(zipCode);
         } else {
             zipValidator();
-            zipCode.parentElement.className = 'valid';
-            zipCode.parentElement.className.remove = 'not-valid';
-            zipCode.parentElement.lastElementChild.style.display = 'none';
+            inputValid(zipCode);
         }  
         if (!cvvValidator()) {
             e.preventDefault();
-            cvvNumber.parentElement.className = 'not-valid';
-            cvvNumber.parentElement.className.remove = 'valid';
-            cvvNumber.parentElement.lastElementChild.style.display = 'block';
+            inputNotValid(cvvNumber);
         } else {
             cvvValidator();
-            cvvNumber.parentElement.className = 'valid';
-            cvvNumber.parentElement.className.remove = 'not-valid';
-            cvvNumber.parentElement.lastElementChild.style.display = 'none';
+            inputValid(cvvNumber);
         }
     }
     
 });
+
+//real time validation for credit card number
+creditCardNum.addEventListener('keyup', )
