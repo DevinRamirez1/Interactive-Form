@@ -132,71 +132,81 @@ paymentOptions.addEventListener('change', e =>{
 const nameValidator = () => {
     const nameValue = nameInput.value;
     const nameValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
-    console.log(`Name validation test on "${nameValue}" evaluates to ${nameValid}`);
     return nameValid;
 };
 
 const emailValidator = () => {
     const emailValue = emailInput.value;
     const emailValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailValue);
-    console.log(`email validation test on "${emailValue}" evaluates to ${emailValid}`);
     return emailValid;
 };
 
 const activityValidator = () => {
     const activityValid = activityTotal > 0
-    console.log(`activity validation test on "${activityTotal}" evaluates to ${activityValid}`);
     return activityValid;
 };
 
 const creditCardValidator = () => {
     const creditCardValue = creditCardNum.value;
     const creditCardValid = /^[\d]{13,16}$/.test(creditCardValue);
-    console.log(`credit card validation test on "${creditCardValue}" evaluates to ${creditCardValid}`);
     return creditCardValid;
 };
 
 const zipValidator = () => {
     const zipCodeValue = zipCode.value;
     const zipCodeValid = /^[\d]{5}$/.test(zipCodeValue);
-    console.log(`zip validation test on "${zipCodeValue}" evaluates to ${zipCodeValid}`);
     return zipCodeValid;
 }
 
 const cvvValidator = () => {
     const cvvValue = cvvNumber.value;
     const cvvValid = /^[\d]{3}$/.test(cvvValue);
-    console.log(`cvv validation test on "${cvvValue}" evaluates to ${cvvValid}`);
     return cvvValid
 }
 
 //submit eventlistener
 form.addEventListener('submit', e => {
-    nameValidator();
-    emailValidator();
-    activityValidator();
-    creditCardValidator();
-    zipValidator();
-    cvvValidator();
+    // nameValidator();
+    // emailValidator();
+    // activityValidator();
+    // creditCardValidator();
+    // zipValidator();
+    // cvvValidator();
 
     if (!nameValidator()) {
         e.preventDefault();
+    } else {
+        nameValidator();
     }
+
     if (!emailValidator()) {
         e.preventDefault();
+    } else {
+        emailValidator();
     }
+
     if (!activityValidator()) {
         e.preventDefault();
+    } else {
+        activityValidator();
     }
-      if (!creditCardValidator()) {
-       e.preventDefault();
-     }
-     if (!zipValidator()) {
+    if (paymentOptions.value === 'credit-card') {
+        if (!creditCardValidator()) {
         e.preventDefault();
-      }
-      if (!cvvValidator()) {
-        e.preventDefault();
-      }
- 
+        } else {
+            creditCardValidator();
+        }
+        if (!zipValidator()) {
+            e.preventDefault();
+        } else {
+            zipValidator();
+        }
+    
+        if (!cvvValidator()) {
+            e.preventDefault();
+        } else {
+            cvvValidator();
+        }
+    }
     
 });
