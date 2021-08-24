@@ -231,6 +231,7 @@ form.addEventListener('submit', e => {
         activityOptions.lastElementChild.style.display = 'none';
 
     }
+
     if (paymentOptions.value === 'credit-card') {
         if (!creditCardValidator()) {
             e.preventDefault();
@@ -257,5 +258,29 @@ form.addEventListener('submit', e => {
     
 });
 
-//real time validation for credit card number
-creditCardNum.addEventListener('keyup', )
+//real time validation for credit card info
+if (paymentOptions.value === 'credit-card') {
+creditCardField.addEventListener('keyup', (e) => {
+    if (!creditCardValidator()) {
+        e.preventDefault();
+        inputNotValid(creditCardNum);
+    } else {
+        creditCardValidator();
+        inputValid(creditCardNum);
+    }
+    if (!zipValidator()) {
+        e.preventDefault();
+        inputNotValid(zipCode);
+    } else {
+        zipValidator();
+        inputValid(zipCode);
+    }  
+    if (!cvvValidator()) {
+        e.preventDefault();
+        inputNotValid(cvvNumber);
+    } else {
+        cvvValidator();
+        inputValid(cvvNumber);
+    }
+ });
+}
