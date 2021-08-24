@@ -200,8 +200,7 @@ form.addEventListener('submit', e => {
             e.preventDefault();
         } else {
             zipValidator();
-        }
-    
+        }  
         if (!cvvValidator()) {
             e.preventDefault();
         } else {
