@@ -108,6 +108,7 @@ for (let i = 0; i < activityCheckbox.length; i++) {
     });
 };   
 
+//event listener for payment options
 paymentOptions.addEventListener('change', e =>{
     let paymentChoice = e.target;
 
@@ -127,6 +128,8 @@ paymentOptions.addEventListener('change', e =>{
         creditCardField.style.display = 'block';
     }
 });
+
+
 
 //helper functions for form validation
 const nameValidator = () => {
@@ -171,7 +174,13 @@ form.addEventListener('submit', e => {
         e.preventDefault();
         nameInput.parentElement.className = 'not-valid';
         nameInput.parentElement.className.remove = 'valid';
+        if (nameInput.value === ''){
+        nameInput.parentElement.lastElementChild.innerHTML = 'Name field cannot be blank';
         nameInput.parentElement.lastElementChild.style.display = 'block';
+        } else {
+            nameInput.parentElement.lastElementChild.innerHTML = 'Cannot include numbers or special symbols';
+            nameInput.parentElement.lastElementChild.style.display = 'block';
+        }
     } else {
         nameValidator();
         nameInput.parentElement.className = 'valid';
