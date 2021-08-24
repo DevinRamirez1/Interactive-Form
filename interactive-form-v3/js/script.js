@@ -98,7 +98,15 @@ document.getElementById('activities-cost').textContent = `Total: $${totalCost}`;
 
 });
 
+for (let i = 0; i < activityCheckbox.length; i++) {
+    activityCheckbox[i].addEventListener('focus', e => {
+     e.target.parentElement.className = 'focus';
+    });
 
+    activityCheckbox[i].addEventListener('blur', e => {
+        e.target.parentElement.classList.remove('focus');
+    });
+};   
 
 paymentOptions.addEventListener('change', e =>{
     let paymentChoice = e.target;
