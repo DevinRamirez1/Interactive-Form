@@ -81,17 +81,21 @@ shirtDesign.addEventListener('change', (e) =>{
 
 //event listenver for activity selection
 activityOptions.addEventListener('change', e => {
-    let clicked = e.target
-    let clickedDateTime = clicked.getAttribute('data-day-and-time');
     let totalCost = 0;
+    let clicked = e.target;
+    let selectedTime = clicked.getAttribute('data-day-and-time');
 
     for (let i = 0; i < activityCheckbox.length; i ++){
         let checkBoxes = activityCheckbox[i];
-        let checkBoxesDateTime = activityCheckbox[i].getAttribute('data-day-and-time');
+        let dayAndTime = activityCheckbox[i].getAttribute('data-day-and-time');
+    if (dayAndTime === selectedTime){
+        checkBoxes.disabled = true;
+        clicked.disabled = false;
+    }
     if (checkBoxes.checked){
         totalCost += parseInt(checkBoxes.getAttribute('data-cost'));
-        
     }  
+
 }
 (e.target.checked) ? activityTotal++ : activityTotal--;
 document.getElementById('activities-cost').textContent = `Total: $${totalCost}`;
