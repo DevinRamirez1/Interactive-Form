@@ -112,7 +112,11 @@ activityOptions.addEventListener('change', e => {
     if (checkBoxes.checked){
         totalCost += parseInt(checkBoxes.getAttribute('data-cost'));
     }  
-    if (clicked != clicked.checked){
+}
+    if (clicked.checked === false){
+        for (let i = 0; i < activityCheckbox.length; i ++){
+            let checkBoxes = activityCheckbox[i];
+            let dayAndTime = activityCheckbox[i].getAttribute('data-day-and-time');
         if (dayAndTime === selectedTime){
             checkBoxes.disabled = false;
             clicked.disabled = false;
