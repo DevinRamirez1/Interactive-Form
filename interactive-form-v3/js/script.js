@@ -226,13 +226,13 @@ form.addEventListener('submit', e => {
 
     if (!activityValidator()) {
         e.preventDefault();
-        activityOptions.className = 'not-valid';
-        activityOptions.className.remove = 'valid';
+        activityOptions.classList.add = 'not-valid';
+        activityOptions.classList.remove = 'valid';
         activityOptions.lastElementChild.style.display = 'block';
     } else {
         activityValidator();
-        activityOptions.className = 'valid';
-        activityOptions.className.remove = 'not-valid';
+        activityOptions.classList.add = 'valid';
+        activityOptions.classList.remove = 'not-valid';
         activityOptions.lastElementChild.style.display = 'none';
 
     }
