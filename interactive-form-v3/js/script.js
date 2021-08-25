@@ -45,10 +45,6 @@ nameInput.focus();
 //hide other job textbox upon loading page
 jobRoleOther.style.display = 'none';
 
-//refresh page function
-function refreshPage(){
-    window.location.reload();
-}
 //valid input function
 const inputValid = (input) => {
     input.parentElement.className = 'valid';
