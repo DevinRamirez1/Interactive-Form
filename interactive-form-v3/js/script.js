@@ -112,7 +112,12 @@ activityOptions.addEventListener('change', e => {
     if (checkBoxes.checked){
         totalCost += parseInt(checkBoxes.getAttribute('data-cost'));
     }  
-
+    if (clicked != clicked.checked){
+        if (dayAndTime === selectedTime){
+            checkBoxes.disabled = false;
+            clicked.disabled = false;
+        }
+    }
 }
 (e.target.checked) ? activityTotal++ : activityTotal--;
 document.getElementById('activities-cost').textContent = `Total: $${totalCost}`;

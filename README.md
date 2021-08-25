@@ -2,10 +2,11 @@
  Applying Javascript to a sign up form
 
 ##Installation
-
+```bash
 You can download program using https://github.com/DevinRamirez1/Interactive-Form
+```
 ##Usage
-
+```python
 #adds javascript to registration form to make interactive.
 
 nameInput.focus()
@@ -55,8 +56,7 @@ creditCardField.addEventListener
 
 form.addEventListener
 #validates form when submitted
-
-
+```
 ##Contributing
 
 TeamTreehouse with starter files
