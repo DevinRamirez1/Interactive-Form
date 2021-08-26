@@ -16,28 +16,28 @@ jobRoleOther.style.display
 #hides other role input until selected in dropdown box
 
 inputValid()
-#code for valid inputs
+#block of code to set inputs to valid and remove invalid
 
 inputNotValid()
-#code for invalid inputs
+#block of code to set inputs to invalid and remove valid
 
 nameValidator()
-#code to validate name
+#code to validate nameInput
 
 emailValidator()
-#code to validate email
+#code to validate emailInput
 
 activityValidator()
 #code to validate activity selection amount
 
 creditCardValidator()
-#code to validate credit card number
+#code to validate creditCardNum input
 
 zipValidator()
-#code to validate zip code
+#code to validate zipCode
 
 cvvValidator()
-#code to validate cvv number
+#code to validate cvvNumber
 
 jobRoleList.addEventListener
 #listens for other job role option to display input
@@ -55,7 +55,7 @@ creditCardField.addEventListener
 #real time validator for credit card info
 
 form.addEventListener
-#validates form when submitted
+#validates form when submitted, inside this listener the nameValidator offers a different error message depending on the reason, this is my conditional input
 ```
 ##Contributing
 
