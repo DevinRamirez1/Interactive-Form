@@ -231,8 +231,8 @@ form.addEventListener('submit', e => {
         activityOptions.lastElementChild.style.display = 'block';
     } else {
         activityValidator();
-        activityOptions.classList.add = 'valid';
-        activityOptions.classList.remove = 'not-valid';
+        activityOptions.classList.add('valid');
+        activityOptions.classList.remove('not-valid');
         activityOptions.lastElementChild.style.display = 'none';
 
     }
